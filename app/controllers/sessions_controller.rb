@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       #after user login, redirect to the user's information page
       log_in user
       params[:session][:remember_me]=="1" ? remember(user) : forget(user)
-      redirect_to user_url(user)
+      redirect_back_or user
     else
       flash.now[:danger]="Invalid email/password conbination"
       render "new"
